@@ -170,6 +170,22 @@ body::after {
 
 These three layers are in `main.css` via `::before`, `::after`, and a `<div class="scanline">` in `app.vue`.
 
+> **Style-system override:** The style-system spec prohibits `::before/::after` scanlines and `@keyframes`. This creative frontend spec supersedes those rules for body-level visual language only. Component-level patterns (buttons, inputs, cards) still follow the style-system spec exactly.
+
+CSS custom properties used in component CSS snippets below (`var(--accent)`, `var(--bg)`, etc.) are defined once in `main.css`:
+```css
+:root {
+  --accent: theme('colors.accent');
+  --accent-2: theme('colors.accent-2');
+  --accent-3: theme('colors.accent-3');
+  --bg: theme('colors.bg');
+  --surface: theme('colors.surface');
+  --border: theme('colors.border');
+  --text: theme('colors.text');
+  --text-dim: theme('colors.text-dim');
+}
+```
+
 ### Corner Brackets (CornerBracket.vue)
 
 Applied to: all main cards, panels, modals, header.
@@ -362,7 +378,7 @@ Two-column desktop: left nav (profile / ai-provider links) + right form area.
 
 **AI Provider form:**
 - Connected provider card with CornerBracket: name + model + status PulseDot
-- `UsageSparkline` — 30-day usage chart (SVG, hand-drawn, no chart library)
+- `UsageSparkline` — 30-day usage chart (raw SVG polyline/path elements, no chart library)
 - Monthly cap slider
 - `[Disconnect]` ghost accent-2 + `[Reconnect]` ghost
 
@@ -391,7 +407,7 @@ Two-column desktop: left nav (profile / ai-provider links) + right form area.
 | `WizardProgress` | `components/onboarding/WizardProgress.vue` | 3-step progress bar |
 | `ProviderCard` | `components/onboarding/ProviderCard.vue` | AI provider selection card |
 | `SkillTagInput` | `components/settings/SkillTagInput.vue` | Tag chip input |
-| `UsageSparkline` | `components/settings/UsageSparkline.vue` | 30-day SVG sparkline |
+| `UsageSparkline` | `components/settings/UsageSparkline.vue` | 30-day SVG sparkline (raw polyline/path, no chart library) |
 | `PricingCard` | `components/landing/PricingCard.vue` | Tier pricing card |
 | `DemoFeedCard` | `components/landing/DemoFeedCard.vue` | Readonly fake lead card |
 | `CornerBracket` | `components/ui/CornerBracket.vue` | Corner bracket wrapper |
