@@ -176,6 +176,8 @@ Exception: progress bar fill uses `rounded-full` for pill shape only.
 
 ### Feed new match (GSAP)
 
+The root element of `MatchCard.vue` must carry `class="match-card"` so GSAP can target it.
+
 When `prependMatch` is called via WebSocket, animate the incoming card:
 
 ```typescript
