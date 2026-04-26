@@ -1,0 +1,26 @@
+{
+  "name": "lead-hunter-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev --host 0.0.0.0",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "nuxt typecheck",
+    "lint": "eslint . --ext .vue,.ts,.tsx"
+  },
+  "dependencies": {
+    "nuxt": "^3.11.0",
+    "vue": "^3.4.0",
+    "@nuxtjs/tailwindcss": "^6.11.0"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.2.0",
+    "@vue/test-utils": "^2.4.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.4.0"
+  }
+}
