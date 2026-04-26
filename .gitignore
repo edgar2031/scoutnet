@@ -17,6 +17,7 @@ src/frontend/node_modules/
 src/frontend/.nuxt/
 src/frontend/.output/
 src/frontend/pnpm-lock.yaml
+src/frontend/.pnpm-store/
 
 # IDE
 .idea/
