@@ -1,0 +1,22 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO processed_webhook_events (stripe_event_id)\n           VALUES ($1)\n           ON CONFLICT (stripe_event_id) DO NOTHING\n           RETURNING stripe_event_id",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "stripe_event_id",
+        "type_info": "Text"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "b65b3185949545dd6180729fc99f68470552497dc46504617efdc0a9bcc6857d"
+}

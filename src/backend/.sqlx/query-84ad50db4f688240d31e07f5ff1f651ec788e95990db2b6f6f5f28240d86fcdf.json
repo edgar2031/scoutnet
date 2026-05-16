@@ -1,0 +1,16 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO match_feedback (user_id, match_id, signal)\n           SELECT $1, $2, $3\n           WHERE EXISTS (SELECT 1 FROM matches WHERE id = $2 AND user_id = $1)\n           ON CONFLICT (user_id, match_id) DO UPDATE\n             SET signal     = EXCLUDED.signal,\n                 created_at = NOW()",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Uuid",
+        "Uuid",
+        "Int2"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "84ad50db4f688240d31e07f5ff1f651ec788e95990db2b6f6f5f28240d86fcdf"
+}

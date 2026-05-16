@@ -1,0 +1,19 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO ai_usage (id, user_id, feature, input_tokens, output_tokens, cost_usd, created_at)\n               VALUES ($1, $2, $3, $4, $5, $6, NOW())",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Uuid",
+        "Uuid",
+        "Text",
+        "Int4",
+        "Int4",
+        "Float8"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "621bfe38b95e85eb9c6e3e6ce0446f963c32c1355a615153a8d02b32be57e650"
+}

@@ -1,0 +1,14 @@
+[package]
+name    = "crypto"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aes-gcm   = { version = "0.10", features = ["aes"] }
+secrecy   = { workspace = true }
+zeroize   = { workspace = true }
+rand      = "0.8"
+thiserror = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true }

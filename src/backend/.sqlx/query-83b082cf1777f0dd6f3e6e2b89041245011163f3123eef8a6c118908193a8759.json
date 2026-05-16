@@ -1,0 +1,19 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO user_profiles\n             (user_id, bio, skills, min_budget, channels, score_threshold)\n           VALUES ($1, $2, $3, $4, $5, COALESCE($6::REAL, 0.70::REAL))\n           ON CONFLICT (user_id) DO UPDATE\n             SET bio             = EXCLUDED.bio,\n                 skills          = EXCLUDED.skills,\n                 min_budget      = EXCLUDED.min_budget,\n                 channels        = EXCLUDED.channels,\n                 score_threshold = COALESCE(EXCLUDED.score_threshold, user_profiles.score_threshold),\n                 updated_at      = NOW()",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Uuid",
+        "Text",
+        "TextArray",
+        "Int4",
+        "TextArray",
+        "Float4"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "83b082cf1777f0dd6f3e6e2b89041245011163f3123eef8a6c118908193a8759"
+}

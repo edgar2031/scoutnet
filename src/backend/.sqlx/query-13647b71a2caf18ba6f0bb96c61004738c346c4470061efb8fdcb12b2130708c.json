@@ -1,0 +1,40 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT bio, skills, min_budget, score_threshold\n           FROM user_profiles WHERE user_id = $1",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "bio",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 1,
+        "name": "skills",
+        "type_info": "TextArray"
+      },
+      {
+        "ordinal": 2,
+        "name": "min_budget",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 3,
+        "name": "score_threshold",
+        "type_info": "Float4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      true,
+      true,
+      true,
+      false
+    ]
+  },
+  "hash": "13647b71a2caf18ba6f0bb96c61004738c346c4470061efb8fdcb12b2130708c"
+}
