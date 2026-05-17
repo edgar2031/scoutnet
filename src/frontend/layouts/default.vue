@@ -18,8 +18,8 @@ const aiConnected = useState('aiConnected', () => false)
     <AppHeader :ai-connected="aiConnected" />
     <AppSidebar :ai-connected="aiConnected" />
 
-    <!-- Main content — offset for fixed header (h-14) + desktop sidebar (w-[64px]) -->
-    <main class="pt-14 md:pl-[64px] min-h-screen">
+    <!-- Main content — offset for fixed header (h-7=28px) + desktop sidebar (w-10=40px) -->
+    <main class="pt-7 md:pl-10 min-h-screen">
       <slot />
     </main>
 

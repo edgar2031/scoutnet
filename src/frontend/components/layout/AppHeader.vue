@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * Fixed top header — premium dark bar with gradient logo, live feed counter, AI spend display, and tier badge.
+ * Fixed top header — Cardinal-style compact status bar.
  *
  * @example
  * <AppHeader :new-count="12" :spend="0.42" tier="PRO" />
@@ -26,57 +26,36 @@ const section = computed(() => {
 
 <template>
   <header
-    class="fixed top-0 left-0 right-0 h-14 z-50 flex items-center px-6 gap-4
-           bg-bg/[0.97] backdrop-blur-xl
-           border-b border-border/60
-           shadow-[0_1px_0_rgba(30,38,64,0.5),0_6px_32px_rgba(0,0,0,0.5)]"
+    class="fixed top-0 left-0 right-0 h-7 z-50 flex items-center px-4 gap-3
+           bg-bg border-b border-border"
   >
     <!-- Logo -->
-    <NuxtLink to="/dashboard" class="flex items-center gap-2 no-underline group shrink-0">
-      <span
-        class="font-sans font-black text-base tracking-tight
-               bg-gradient-to-r from-accent via-accent to-accent-3
-               bg-clip-text text-transparent
-               transition-all duration-200"
-      >
-        ◢ SCOUTNET
+    <NuxtLink to="/dashboard" class="flex items-center gap-2 no-underline shrink-0">
+      <span class="font-mono text-2xs font-bold tracking-wide text-white uppercase">
+        ◢ Scoutnet
       </span>
-      <span class="font-mono text-[9px] text-text-muted/50 tracking-widest">V1.0.0</span>
+      <span class="font-mono text-2xs text-text-muted tracking-wider">лид файндер</span>
+      <span class="font-mono text-2xs text-text-faint tracking-wider">V1.0.0</span>
     </NuxtLink>
-
-    <div class="w-px h-5 bg-border" />
-
-    <!-- Feed live counter -->
-    <div class="flex items-center gap-2 font-mono text-[11px] text-text-dim">
-      <span class="tracking-widest">// {{ section }}</span>
-      <template v-if="newCount">
-        <PulseDot color="accent" />
-        <span class="text-accent font-bold">{{ newCount }} new</span>
-      </template>
-    </div>
 
     <div class="flex-1" />
 
-    <!-- AI spend -->
-    <div
-      v-if="spend !== undefined"
-      class="flex items-baseline gap-1 font-mono"
-    >
-      <span class="text-sm font-bold text-text">${{ spend.toFixed(2) }}</span>
-      <span class="text-[10px] text-text-muted">today</span>
-    </div>
+    <!-- Status -->
+    <div class="flex items-center gap-3 font-mono text-2xs text-text-muted uppercase tracking-wider">
+      <div class="flex items-center gap-1.5">
+        <PulseDot color="accent" />
+        <span class="text-src-bot">sys online</span>
+      </div>
 
-    <!-- Tier badge -->
-    <span
-      v-if="tier"
-      :class="[
-        'font-mono text-xs font-bold px-3 py-1 rounded-pill border tracking-widest transition-all duration-200',
-        tier === 'PRO' || tier === 'TEAM'
-          ? 'text-accent border-accent/50 bg-accent/10 shadow-glow-sm'
-          : 'text-text-dim border-border bg-surface',
-      ]"
-    >
-      {{ tier }}
-    </span>
+      <span class="text-text-faint">|</span>
+
+      <template v-if="newCount">
+        <span>источников</span>
+        <span class="text-accent font-bold">{{ newCount }}</span>
+        <span class="text-text-faint">|</span>
+      </template>
+
+      <span>{{ section }}</span>
+    </div>
   </header>
 </template>

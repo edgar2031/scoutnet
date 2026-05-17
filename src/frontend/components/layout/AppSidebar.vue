@@ -34,10 +34,8 @@ const links: NavLink[] = [
 
 <template>
   <aside
-    class="hidden md:flex fixed left-0 top-14 bottom-0 w-[64px] z-40 flex-col items-center py-5 gap-2
-           bg-bg/[0.99] backdrop-blur-md
-           border-r border-border/40
-           shadow-[4px_0_32px_rgba(0,0,0,0.4)]"
+    class="hidden md:flex fixed left-0 top-7 bottom-0 w-10 z-40 flex-col items-center py-3 gap-1.5
+           bg-bg border-r border-border"
   >
     <NuxtLink
       v-for="link in links"
@@ -45,24 +43,24 @@ const links: NavLink[] = [
       :to="link.to"
       :title="link.label"
       :class="[
-        'relative w-11 h-11 flex items-center justify-center rounded-xl transition-all duration-200 no-underline group',
+        'relative w-7 h-7 flex items-center justify-center rounded transition-all duration-150 no-underline group',
         route.path.startsWith(link.to)
-          ? 'text-accent shadow-[0_0_12px_rgba(249,115,22,0.6)]'
-          : 'text-text-dim hover:text-text hover:bg-white/[0.05]',
+          ? 'text-accent shadow-glow-sm'
+          : 'text-text-muted hover:text-text-dim',
       ]"
     >
       <!-- Active indicator bar -->
       <span
         v-if="route.path.startsWith(link.to)"
-        class="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r-full bg-accent shadow-[0_0_8px_rgba(249,115,22,0.9)]"
+        class="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-r-full bg-accent"
       />
       <!-- Active bg glow -->
       <span
         v-if="route.path.startsWith(link.to)"
-        class="absolute inset-0 rounded-xl bg-accent/[0.10]"
+        class="absolute inset-0 rounded bg-accent/10"
       />
 
-      <component :is="link.icon" :size="20" class="relative z-10" />
+      <component :is="link.icon" :size="14" class="relative z-10" />
 
       <PulseDot
         v-if="link.isAi && aiConnected"

@@ -28,16 +28,16 @@ interface GraphNode {
 }
 
 const SOURCE_HEX: Record<GraphNode['source'], number> = {
-  telegram: 0x4ade80,   // soft green — Cardinal TG style
-  upwork:   0xe0a040,   // muted gold
-  bot:      0xe06080,   // soft coral
-  thread:   0x9580e0,   // soft lavender
+  telegram: 0x2ca5e0,   // blue — Cardinal spec
+  upwork:   0xf97316,   // orange
+  bot:      0x22c55e,   // green
+  thread:   0x8b5cf6,   // purple
 }
 const SOURCE_RGB: Record<GraphNode['source'], string> = {
-  telegram: '74,222,128',
-  upwork:   '224,160,64',
-  bot:      '224,96,128',
-  thread:   '149,128,224',
+  telegram: '44,165,224',
+  upwork:   '249,115,22',
+  bot:      '34,197,94',
+  thread:   '139,92,246',
 }
 type SvgChild = [string, Record<string, string>]
 
@@ -58,10 +58,10 @@ const SOURCE_ICON: Record<GraphNode['source'], SvgChild[]> = {
   thread:   iconNode(Hash),       // lucide: Hash — thread / forum channel
 }
 const SOURCE_TOOLTIP_CLASS: Record<GraphNode['source'], string> = {
-  telegram: 'text-green-300   border-green-300/30   shadow-[0_0_12px_rgba(74,222,128,0.25)]',
-  upwork:   'text-amber-300   border-amber-300/30   shadow-[0_0_12px_rgba(224,160,64,0.25)]',
-  bot:      'text-rose-300    border-rose-300/30    shadow-[0_0_12px_rgba(224,96,128,0.25)]',
-  thread:   'text-violet-300  border-violet-300/30  shadow-[0_0_12px_rgba(149,128,224,0.25)]',
+  telegram: 'text-src-tg  border-src-tg/30  shadow-[0_0_12px_rgba(44,165,224,0.25)]',
+  upwork:   'text-orange  border-orange/30  shadow-[0_0_12px_rgba(249,115,22,0.25)]',
+  bot:      'text-src-bot border-src-bot/30 shadow-[0_0_12px_rgba(34,197,94,0.25)]',
+  thread:   'text-accent  border-accent/30  shadow-[0_0_12px_rgba(139,92,246,0.25)]',
 }
 
 // 18 nodes evenly distributed on a circle, r ≈ 2.8–3.7, Z ±0.25
@@ -139,10 +139,10 @@ function makeIconEl(node: GraphNode): HTMLElement {
   const box  = document.createElement('div')
   box.style.cssText = `
     width:${sz}px;height:${sz}px;
-    border-radius:9px;
-    background:rgba(5,7,15,0.92);
-    border:1.5px solid rgba(${rgb},0.65);
-    box-shadow:0 0 12px rgba(${rgb},0.45),inset 0 0 8px rgba(${rgb},0.08);
+    border-radius:8px;
+    background:#12121e;
+    border:1px solid rgba(${rgb},0.5);
+    box-shadow:0 0 8px rgba(${rgb},0.3);
     display:flex;align-items:center;justify-content:center;
     transition:box-shadow 0.18s,border-color 0.18s;
     pointer-events:none;
@@ -382,10 +382,10 @@ onBeforeUnmount(() => { cancelAnimationFrame(animId); renderer?.dispose(); windo
 
     <!-- Legend -->
     <div class="absolute bottom-3 left-3 z-10 flex gap-3 font-mono text-[10px] pointer-events-none items-center">
-      <span class="flex items-center gap-1 text-green-300"><Send :size="10" /> TG</span>
-      <span class="flex items-center gap-1 text-violet-300"><Hash :size="10" /> Thread</span>
-      <span class="flex items-center gap-1 text-amber-300"><Briefcase :size="10" /> Upwork</span>
-      <span class="flex items-center gap-1 text-rose-300"><Zap :size="10" /> Bot</span>
+      <span class="flex items-center gap-1 text-src-tg"><Send :size="10" /> Telegram</span>
+      <span class="flex items-center gap-1 text-accent"><Hash :size="10" /> Threads</span>
+      <span class="flex items-center gap-1 text-orange"><Briefcase :size="10" /> Kanal</span>
+      <span class="flex items-center gap-1 text-src-bot"><Zap :size="10" /> Bot</span>
     </div>
   </div>
 </template>

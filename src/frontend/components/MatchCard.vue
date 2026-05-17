@@ -42,9 +42,9 @@ const barColorClean = computed(() =>
 /** Priority label and Tailwind classes derived from score. */
 const priority = computed(() => {
   const s = props.match.score
-  if (s >= 0.85) return { label: 'HIGH', badge: 'text-red-400   bg-red-500/10   border-red-500/30',   border: 'border-l-red-500'   }
-  if (s >= 0.65) return { label: 'MED',  badge: 'text-yellow   bg-yellow/10   border-yellow/30',   border: 'border-l-yellow'   }
-  return              { label: 'LOW',  badge: 'text-blue-400 bg-blue-500/10 border-blue-500/30', border: 'border-l-blue-500' }
+  if (s >= 0.85) return { label: 'HIGH', badge: 'text-tag-high bg-tag-high/15 border-tag-high/30', border: 'border-l-tag-high', glow: 'shadow-glow-red'   }
+  if (s >= 0.65) return { label: 'MED',  badge: 'text-tag-mid  bg-tag-mid/15  border-tag-mid/30',  border: 'border-l-tag-mid',  glow: 'shadow-glow-orange' }
+  return              { label: 'LOW',  badge: 'text-tag-low  bg-tag-low/15  border-tag-low/30',  border: 'border-l-tag-low',  glow: 'shadow-glow-blue'   }
 })
 
 /** Short source tag. */
@@ -75,82 +75,48 @@ function fmtBudget(rub: number): string {
   <!-- Content -->
   <article
     v-else
-    class="match-card relative bg-[rgba(12,16,28,0.85)] backdrop-blur-sm border border-[rgba(140,160,200,0.1)] rounded-card shadow-card overflow-hidden cursor-pointer
-           border-l-[3px] transition-all duration-200 hover:shadow-card-hover hover:-translate-y-px"
-    :class="priority.border"
+    class="match-card relative bg-surface-2 border border-border rounded-card overflow-hidden cursor-pointer
+           border-l-[3px] transition-all duration-150"
+    :class="[priority.border, priority.glow]"
   >
-    <div class="px-4 pt-4 pb-3 space-y-2.5">
+    <div class="px-3.5 py-3 space-y-2">
 
-      <!-- Header: badge + source + channel + time -->
-      <div class="flex items-center justify-between gap-2 min-w-0">
-        <div class="flex items-center gap-1.5 min-w-0">
-          <span
-            class="shrink-0 font-mono text-[10px] px-2 py-0.5 rounded border uppercase tracking-widest"
-            :class="priority.badge"
-          >{{ priority.label }}</span>
-          <span class="font-mono text-[10px] text-text-muted uppercase tracking-widest shrink-0">{{ sourceTag }}</span>
-          <span class="font-mono text-xs text-text-dim truncate">{{ match.message?.channel }}</span>
-        </div>
-        <span class="font-mono text-[10px] text-text-muted shrink-0 tabular-nums">{{ timeAgo(match.message?.posted_at) }}</span>
+      <!-- Row 1: priority tag + timestamp -->
+      <div class="flex items-center justify-between">
+        <span
+          class="font-mono text-2xs px-1.5 py-0.5 rounded-tag border uppercase"
+          :class="priority.badge"
+        >{{ priority.label }}</span>
+        <span class="font-mono text-2xs text-text-faint tabular-nums">{{ timeAgo(match.message?.posted_at) }}</span>
       </div>
 
-      <!-- Lead description -->
-      <p class="font-sans text-sm text-text leading-relaxed line-clamp-2">{{ match.reason }}</p>
+      <!-- Row 2: source + channel -->
+      <div class="flex items-center gap-1 min-w-0">
+        <span class="font-mono text-2xs text-text-muted uppercase shrink-0">{{ sourceTag }} ·</span>
+        <span class="font-mono text-2xs text-accent truncate">{{ match.message?.channel }}</span>
+      </div>
 
-      <!-- Budget — hero element, shown when available -->
-      <div v-if="budgetRub" class="font-mono text-[28px] font-black tracking-tight text-text">
+      <!-- Row 3: description (2 lines max) -->
+      <p class="text-xs text-text-dim leading-relaxed line-clamp-2">{{ match.reason }}</p>
+
+      <!-- Row 4: budget — large white mono -->
+      <div v-if="budgetRub" class="font-mono text-[28px] font-extrabold tracking-[0.05em] text-white">
         {{ fmtBudget(budgetRub) }}
       </div>
 
-      <!-- Cover % + bar -->
+      <!-- Row 5: progress bar + match percent -->
       <div class="space-y-1.5">
         <div class="flex items-center justify-between">
-          <span class="font-mono text-[10px] text-text-muted uppercase tracking-widest">Cover</span>
-          <span class="font-mono text-sm font-bold" :class="scoreColor">{{ fmtScore(match.score) }}</span>
+          <span class="font-mono text-2xs text-text-muted uppercase">Cover</span>
+          <span class="font-mono text-[10px] text-text-muted" :class="scoreColor">{{ fmtScore(match.score) }}</span>
         </div>
-        <div class="relative h-[2px] bg-surface-3 rounded-full overflow-hidden">
+        <div class="relative h-[2px] rounded-[1px] bg-border overflow-hidden">
           <div
-            class="absolute left-0 top-0 h-full rounded-full transition-all duration-700 shadow-[0_0_6px_currentColor]"
+            class="absolute left-0 top-0 h-full rounded-[1px] transition-all duration-700"
             :class="barColorClean"
             :style="{ width: `${match.score * 100}%` }"
           />
         </div>
-      </div>
-
-      <!-- Action pills -->
-      <div class="flex gap-1.5 pt-0.5">
-        <button
-          class="flex items-center gap-1 px-3 py-1 rounded-pill
-                 font-mono text-[10px] uppercase tracking-widest
-                 border border-border-subtle text-text-dim
-                 hover:border-accent hover:text-accent hover:bg-accent/10
-                 transition-all duration-150"
-          @click.stop="emit('feedback', 1)"
-        >
-          <ThumbsUp :size="11" />
-          Good
-        </button>
-        <button
-          class="flex items-center gap-1 px-3 py-1 rounded-pill
-                 font-mono text-[10px] uppercase tracking-widest
-                 border border-border-subtle text-text-dim
-                 hover:border-accent-2 hover:text-accent-2 hover:bg-accent-2/10
-                 transition-all duration-150"
-          @click.stop="emit('feedback', -1)"
-        >
-          <ThumbsDown :size="11" />
-          Bad
-        </button>
-        <button
-          class="ml-auto flex items-center px-3 py-1 rounded-pill
-                 font-mono text-[10px] uppercase tracking-widest
-                 border border-border-subtle text-text-dim
-                 hover:border-border-2 hover:text-text
-                 transition-all duration-150"
-          @click.stop
-        >
-          Skip
-        </button>
       </div>
 
     </div>

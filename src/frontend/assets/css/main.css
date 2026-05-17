@@ -1,11 +1,11 @@
 /* ─── Google Fonts ─────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Base ──────────────────────────────────────────────────────── */
+/* ─── Base — Cardinal spec ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
@@ -15,20 +15,23 @@ html {
 }
 
 html, body, #__nuxt {
-  background-color: #080b14;
-  color: #e8ecf5;
+  background-color: #0a0a0f;
+  color: #e2e8f0;
   min-height: 100vh;
   min-height: 100dvh;
 }
 
 body {
   overflow-x: hidden;
-  font-family: 'Inter', 'ui-sans-serif', system-ui, sans-serif;
+  font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Background layers ─────────────────────────────────────────── */
+/* ─── Background dot grid ──────────────────────────────────────── */
 body::before {
   content: '';
   position: fixed;
@@ -36,12 +39,11 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(140,160,200,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(140,160,200,0.02) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
+    radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
+/* ─── Subtle ambient glow ──────────────────────────────────────── */
 body::after {
   content: '';
   position: fixed;
@@ -49,43 +51,28 @@ body::after {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 55% 40% at 15% 0%, rgba(59,130,246,0.06) 0%, transparent 65%),
-    radial-gradient(ellipse 45% 35% at 85% 100%, rgba(139,92,246,0.04) 0%, transparent 65%),
-    radial-gradient(ellipse 35% 25% at 50% 50%, rgba(100,116,180,0.03) 0%, transparent 70%);
+    radial-gradient(ellipse 50% 40% at 65% 50%, rgba(139,92,246,0.04) 0%, transparent 65%);
 }
 
-/* ─── Scanline ──────────────────────────────────────────────────── */
-.scanline {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0,0,0,0.025) 2px,
-    rgba(0,0,0,0.025) 4px
-  );
-}
-
-/* ─── CSS custom properties ─────────────────────────────────────── */
+/* ─── CSS custom properties — Cardinal palette ─────────────────── */
 :root {
-  --accent:       #f97316;
-  --accent-dim:   #ea6a0a;
+  --accent:       #8b5cf6;
+  --accent-dim:   #7c3aed;
   --accent-2:     #ef4444;
-  --accent-3:     #facc15;
-  --bg:           #080b14;
-  --surface:      #0f1320;
-  --surface-2:    #151929;
-  --border:       #1e2640;
-  --border-2:     #2a3352;
-  --text:         #e8ecf5;
-  --text-dim:     #6b7394;
-  --glow-accent:  0 0 24px rgba(249,115,22,0.25), 0 0 48px rgba(249,115,22,0.08);
-  --glow-red:     0 0 20px rgba(239,68,68,0.25);
-  --glow-yellow:  0 0 20px rgba(250,204,21,0.18);
-  --radius:       12px;
+  --accent-3:     #f97316;
+  --bg:           #0a0a0f;
+  --surface:      #0f0f1a;
+  --surface-2:    #12121e;
+  --surface-3:    #16162a;
+  --border:       #1e1e30;
+  --border-2:     #2d2d4a;
+  --text:         #e2e8f0;
+  --text-dim:     #94a3b8;
+  --text-muted:   #64748b;
+  --text-faint:   #334155;
+  --glow-accent:  0 0 20px rgba(139,92,246,0.4), 0 0 40px rgba(139,92,246,0.2);
+  --glow-red:     0 0 12px rgba(239,68,68,0.15);
+  --radius:       6px;
 }
 
 /* ─── Typography ────────────────────────────────────────────────── */
@@ -96,10 +83,11 @@ a {
 }
 a:hover { opacity: 0.8; }
 
-/* ─── Form elements — reset browser defaults ─────────────────────── */
+/* ─── Form elements ────────────────────────────────────────────── */
 input, textarea, select {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
   background: var(--surface-2);
   color: var(--text);
   border: 1px solid var(--border);
@@ -110,83 +98,52 @@ input, textarea, select {
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--text-dim);
+  color: var(--text-muted);
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(249,115,22,0.15);
+  box-shadow: 0 0 0 2px rgba(139,92,246,0.2);
 }
 
-/* ─── Scrollbar ──────────────────────────────────────────────────── */
-::-webkit-scrollbar              { width: 4px; height: 4px; }
-::-webkit-scrollbar-track        { background: var(--bg); }
-::-webkit-scrollbar-thumb        { background: var(--border-2); }
-::-webkit-scrollbar-thumb:hover  { background: var(--text-dim); }
+/* ─── Scrollbar — 2px thin per spec ────────────────────────────── */
+::-webkit-scrollbar              { width: 2px; height: 2px; }
+::-webkit-scrollbar-track        { background: #0a0a0f; }
+::-webkit-scrollbar-thumb        { background: #2d2d4a; }
+::-webkit-scrollbar-thumb:hover  { background: #8b5cf6; }
 
-/* ─── Selection ─────────────────────────────────────────────────── */
+/* ─── Selection ────────────────────────────────────────────────── */
 ::selection {
-  background: rgba(249,115,22,0.25);
+  background: rgba(139,92,246,0.3);
   color: #fff;
 }
 
-/* ─── Page transitions ──────────────────────────────────────────── */
+/* ─── Page transitions ─────────────────────────────────────────── */
 .page-enter-active,
 .page-leave-active { transition: opacity 0.12s ease, transform 0.12s ease; }
 .page-enter-from   { opacity: 0; transform: translateY(4px); }
 .page-leave-to     { opacity: 0; transform: translateY(-4px); }
 
-/* ─── Glow utilities ─────────────────────────────────────────────── */
+/* ─── Glow utilities ───────────────────────────────────────────── */
 @layer utilities {
   .glow-accent  { box-shadow: var(--glow-accent); }
   .glow-red     { box-shadow: var(--glow-red); }
-  .glow-yellow  { box-shadow: var(--glow-yellow); }
-  .text-glow    { text-shadow: 0 0 16px currentColor; }
+  .text-glow    { text-shadow: 0 0 12px currentColor; }
 
   .glass {
-    background: rgba(22, 22, 22, 0.75);
+    background: rgba(15, 15, 26, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
-
-  .glass-surface {
-    background: rgba(30, 30, 30, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  .border-gradient {
-    position: relative;
-    background-clip: padding-box;
-  }
-  .border-gradient::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    z-index: -1;
-    background: linear-gradient(135deg, rgba(249,115,22,0.5), rgba(239,68,68,0.2), rgba(249,115,22,0.05));
-  }
 }
 
-/* ─── Accent bar on cards ────────────────────────────────────────── */
-.accent-bar-left  { box-shadow: inset 3px 0 0 var(--accent); }
-.accent-bar-red   { box-shadow: inset 3px 0 0 var(--accent-2); }
-.accent-bar-yellow{ box-shadow: inset 3px 0 0 var(--accent-3); }
-
-/* ─── Scanline keyframe ──────────────────────────────────────────── */
-@keyframes scan {
-  from { background-position: 0 0; }
-  to   { background-position: 0 100vh; }
-}
-
-/* ─── Match card hover ───────────────────────────────────────────── */
+/* ─── Match card interaction ───────────────────────────────────── */
 .match-card {
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 .match-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.8), 0 0 20px rgba(249,115,22,0.08);
-  border-color: var(--border-2);
+  background: #16162a !important;
+  border-color: #2d2d4a;
 }

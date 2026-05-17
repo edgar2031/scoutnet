@@ -64,17 +64,17 @@ function onFeedback(matchId: string, signal: 1 | -1) {
 </script>
 
 <template>
-  <div class="flex h-[calc(100vh-56px)]">
+  <div class="flex h-[calc(100vh-28px)]">
 
-    <!-- Feed column -->
-    <section class="w-full md:w-[420px] flex flex-col border-r border-border/60 overflow-hidden shrink-0">
+    <!-- Feed column — 35% per Cardinal spec -->
+    <section class="w-full md:w-[35%] flex flex-col border-r border-border overflow-hidden shrink-0">
 
       <FilterBar v-model:filters="filters" class="shrink-0" />
 
-      <!-- Section header: LIVE FEED label + count badge -->
-      <div class="flex items-center justify-between px-5 py-2.5 border-b border-border/60 shrink-0">
+      <!-- Section header: ЛЕНТА // ЛИДЕРЫ -->
+      <div class="flex items-center justify-between px-3 py-1.5 border-b border-border shrink-0">
         <div class="flex items-center gap-3">
-          <span class="font-mono text-xs text-text-muted uppercase tracking-widest">Live Feed</span>
+          <span class="font-mono text-2xs text-text-muted uppercase tracking-wider">Лента // Лидеры</span>
           <span
             v-if="matches.length > 0"
             class="font-mono text-xs font-bold px-2 py-0.5 rounded-pill
@@ -86,7 +86,7 @@ function onFeedback(matchId: string, signal: 1 | -1) {
         <LiveCounter :count="count" />
       </div>
 
-      <div class="flex-1 overflow-y-auto px-3 py-3 space-y-2">
+      <div class="flex-1 overflow-y-auto px-2 py-2 space-y-1.5">
         <!-- Loading skeletons -->
         <template v-if="loading">
           <Skeleton v-for="i in 5" :key="i" class="h-[130px] w-full rounded-card" />
@@ -120,12 +120,11 @@ function onFeedback(matchId: string, signal: 1 | -1) {
     <!-- 3D Channel Graph (desktop right panel) -->
     <section class="hidden lg:flex flex-1 flex-col relative overflow-hidden">
       <!-- Graph panel header -->
-      <div class="flex items-center justify-between px-5 py-2.5 border-b border-border/60 shrink-0">
+      <div class="flex items-center justify-between px-3 py-1.5 border-b border-border shrink-0">
         <div class="flex items-center gap-3">
-          <span class="font-mono text-xs text-text-muted uppercase tracking-widest">Satellite</span>
-          <span class="font-mono text-[10px] text-text-muted">// Network Graph</span>
+          <span class="font-mono text-2xs text-text-muted uppercase tracking-wider">Сатилит // Рекл-граф</span>
         </div>
-        <div class="flex items-center gap-2 font-mono text-[10px] text-text-muted uppercase tracking-widest">
+        <div class="flex items-center gap-2 font-mono text-2xs text-text-muted uppercase tracking-wider">
           <span class="text-accent">18</span>
           <span>nodes</span>
         </div>

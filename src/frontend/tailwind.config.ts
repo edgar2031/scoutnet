@@ -12,85 +12,95 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Base — cold dark navy, Cardinal-style
-        bg:           '#080b14',
-        'bg-2':       '#0c1019',
-        // Card surfaces — blue-grey tint
-        surface:      '#0f1320',
-        'surface-2':  '#151929',
-        'surface-3':  '#1c2035',
-        // Borders — cool grey-blue
-        border:       '#1e2640',
-        'border-2':   '#2a3352',
-        'border-subtle': 'rgba(140,160,200,0.08)',
+        // Backgrounds — Cardinal spec
+        bg:           '#0a0a0f',
+        'bg-2':       '#0f0f1a',
+        surface:      '#0f0f1a',
+        'surface-2':  '#12121e',
+        'surface-3':  '#16162a',
+        // Borders
+        border:       '#1e1e30',
+        'border-2':   '#2d2d4a',
+        'border-subtle': 'rgba(255,255,255,0.04)',
         // Typography
-        text:         '#e8ecf5',
-        'text-dim':   '#6b7394',
-        'text-muted': '#3d4563',
-        // Primary accent — warm red-orange (Cardinal HIGH badge)
-        accent:       '#f97316',
-        'accent-dim': '#ea6a0a',
+        text:         '#e2e8f0',
+        'text-dim':   '#94a3b8',
+        'text-muted': '#64748b',
+        'text-faint': '#334155',
+        // Purple accent — Cardinal main
+        accent:       '#8b5cf6',
+        'accent-dim': '#7c3aed',
+        'accent-3':   '#9d5cf6',
         // Status / semantic
         'accent-2':   '#ef4444',
-        'accent-3':   '#facc15',
-        yellow:       '#facc15',
+        yellow:       '#f97316',
         orange:       '#f97316',
-        purple:       '#a78bfa',
+        purple:       '#8b5cf6',
         pink:         '#f472b6',
+        cyan:         '#22d3ee',
+        // Priority tags
+        'tag-high':   '#ef4444',
+        'tag-mid':    '#f97316',
+        'tag-low':    '#3b82f6',
+        // Sources
+        'src-tg':     '#2ca5e0',
+        'src-thread': '#ffffff',
+        'src-kanal':  '#f97316',
+        'src-bot':    '#22c55e',
       },
 
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+        mono: ['Share Tech Mono', 'JetBrains Mono', 'ui-monospace', 'monospace'],
       },
 
       fontSize: {
-        '2xs': ['10px', { lineHeight: '14px', letterSpacing: '0.04em' }],
+        '2xs': ['9px', { lineHeight: '1.4', letterSpacing: '0.2em' }],
+        'xs':  ['11px', { lineHeight: '1.4', letterSpacing: '0.1em' }],
+      },
+
+      letterSpacing: {
+        'ui':   '0.1em',
+        'wide': '0.15em',
+        'wider':'0.2em',
       },
 
       borderRadius: {
         card:   '6px',
-        panel:  '10px',
+        node:   '8px',
+        panel:  '6px',
         pill:   '9999px',
+        tag:    '3px',
       },
 
       boxShadow: {
-        card:          '0 1px 3px rgba(0,0,0,0.5), 0 4px 20px rgba(0,0,0,0.4)',
-        'card-md':     '0 2px 8px rgba(0,0,0,0.5), 0 8px 40px rgba(0,0,0,0.5)',
-        'card-hover':  '0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(140,160,200,0.08)',
-        // Accent glow
-        'glow-sm':     '0 0 12px rgba(249,115,22,0.25)',
-        'glow':        '0 0 24px rgba(249,115,22,0.20), 0 0 48px rgba(249,115,22,0.08)',
-        'glow-red':    '0 0 20px rgba(239,68,68,0.25)',
-        'glow-cyan':   '0 0 20px rgba(250,204,21,0.18)',
-        'inset-accent':'inset 0 0 0 1px rgba(249,115,22,0.12)',
-        'focus':       '0 0 0 3px rgba(249,115,22,0.12)',
+        card:          '0 1px 3px rgba(0,0,0,0.5)',
+        'card-hover':  '0 4px 16px rgba(0,0,0,0.6)',
+        'glow-sm':     '0 0 8px rgba(139,92,246,0.3)',
+        'glow':        '0 0 20px rgba(139,92,246,0.4), 0 0 40px rgba(139,92,246,0.2)',
+        'glow-lg':     '0 0 20px rgba(139,92,246,0.4), 0 0 40px rgba(139,92,246,0.2), 0 0 80px rgba(139,92,246,0.1)',
+        'glow-red':    '0 0 12px rgba(239,68,68,0.15)',
+        'glow-orange': '0 0 12px rgba(249,115,22,0.15)',
+        'glow-blue':   '0 0 12px rgba(59,130,246,0.15)',
+        'focus':       '0 0 0 2px rgba(139,92,246,0.2)',
       },
 
       backgroundImage: {
-        'gradient-accent':   'linear-gradient(135deg, #f97316 0%, #ef4444 100%)',
-        'gradient-accent-v': 'linear-gradient(180deg, #f97316 0%, #ef4444 100%)',
-        'gradient-surface':  'linear-gradient(180deg, #0f1320 0%, #080b14 100%)',
-        'glow-orange': 'radial-gradient(ellipse 60% 50% at 20% 0%, rgba(249,115,22,0.06) 0%, transparent 70%)',
-        'glow-red':    'radial-gradient(ellipse 50% 40% at 80% 100%, rgba(239,68,68,0.04) 0%, transparent 70%)',
+        'gradient-accent':   'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+        'gradient-surface':  'linear-gradient(180deg, #0f0f1a 0%, #0a0a0f 100%)',
       },
 
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4,0,0.6,1) infinite',
-        'float':      'float 6s ease-in-out infinite',
-        'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+        'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
         'slide-up':   'slide-up 0.2s ease-out',
         'fade-in':    'fade-in 0.15s ease-out',
       },
 
       keyframes: {
-        'float': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%':      { transform: 'translateY(-6px)' },
-        },
         'glow-pulse': {
-          '0%, 100%': { boxShadow: '0 0 8px rgba(249,115,22,0.2)' },
-          '50%':      { boxShadow: '0 0 24px rgba(249,115,22,0.5), 0 0 48px rgba(249,115,22,0.2)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(139,92,246,0.3)' },
+          '50%':      { boxShadow: '0 0 40px rgba(139,92,246,0.6), 0 0 80px rgba(139,92,246,0.3)' },
         },
         'slide-up': {
           from: { opacity: '0', transform: 'translateY(6px)' },
