@@ -28,15 +28,15 @@ interface GraphNode {
 }
 
 const SOURCE_HEX: Record<GraphNode['source'], number> = {
-  telegram: 0xf97316,
-  upwork:   0xfacc15,
-  bot:      0xef4444,
-  thread:   0x8b5cf6,
+  telegram: 0x22c55e,   // green — matches Cardinal TG nodes
+  upwork:   0xf59e0b,   // amber
+  bot:      0xf43f5e,   // coral-red
+  thread:   0x8b5cf6,   // violet
 }
 const SOURCE_RGB: Record<GraphNode['source'], string> = {
-  telegram: '249,115,22',
-  upwork:   '250,204,21',
-  bot:      '239,68,68',
+  telegram: '34,197,94',
+  upwork:   '245,158,11',
+  bot:      '244,63,94',
   thread:   '139,92,246',
 }
 type SvgChild = [string, Record<string, string>]
@@ -58,10 +58,10 @@ const SOURCE_ICON: Record<GraphNode['source'], SvgChild[]> = {
   thread:   iconNode(Hash),       // lucide: Hash — thread / forum channel
 }
 const SOURCE_TOOLTIP_CLASS: Record<GraphNode['source'], string> = {
-  telegram: 'text-accent   border-accent/30   shadow-[0_0_12px_rgba(249,115,22,0.30)]',
-  upwork:   'text-yellow   border-yellow/30   shadow-[0_0_12px_rgba(250,204,21,0.30)]',
-  bot:      'text-accent-2 border-accent-2/30 shadow-[0_0_12px_rgba(239,68,68,0.30)]',
-  thread:   'text-[#8b5cf6] border-[#8b5cf6]/30 shadow-[0_0_12px_rgba(139,92,246,0.30)]',
+  telegram: 'text-green-400   border-green-400/30   shadow-[0_0_12px_rgba(34,197,94,0.30)]',
+  upwork:   'text-amber-400   border-amber-400/30   shadow-[0_0_12px_rgba(245,158,11,0.30)]',
+  bot:      'text-rose-400    border-rose-400/30    shadow-[0_0_12px_rgba(244,63,94,0.30)]',
+  thread:   'text-violet-400  border-violet-400/30  shadow-[0_0_12px_rgba(139,92,246,0.30)]',
 }
 
 // 18 nodes evenly distributed on a circle, r ≈ 2.8–3.7, Z ±0.25
@@ -197,18 +197,18 @@ function buildScene(container: HTMLDivElement) {
   pV.position.set(0, 0, 1)
   scene.add(pV)
 
-  // Faint orange accent fill
-  const pO = new THREE.PointLight(0xf97316, 0.20, 22)
+  // Faint cool blue fill — Cardinal-style atmosphere
+  const pO = new THREE.PointLight(0x3b82f6, 0.15, 22)
   pO.position.set(5, 3, 2)
   scene.add(pO)
 
-  // Stars
-  const STAR = 900
+  // Stars — visible particle field matching Cardinal reference
+  const STAR = 1400
   const sp   = new Float32Array(STAR * 3)
-  for (let i = 0; i < STAR * 3; i++) sp[i] = (Math.random() - 0.5) * 55
+  for (let i = 0; i < STAR * 3; i++) sp[i] = (Math.random() - 0.5) * 50
   const sg   = new THREE.BufferGeometry()
   sg.setAttribute('position', new THREE.BufferAttribute(sp, 3))
-  scene.add(new THREE.Points(sg, new THREE.PointsMaterial({ color: 0x2d3a55, size: 0.055 })))
+  scene.add(new THREE.Points(sg, new THREE.PointsMaterial({ color: 0x4a5580, size: 0.06, transparent: true, opacity: 0.7 })))
 
   group = new THREE.Group()
   scene.add(group)
@@ -218,7 +218,7 @@ function buildScene(container: HTMLDivElement) {
   for (const node of NODES.slice(1)) {
     const geo = new THREE.BufferGeometry().setFromPoints([uPos, node.pos])
     group.add(new THREE.Line(geo, new THREE.LineBasicMaterial({
-      color: SOURCE_HEX[node.source], transparent: true, opacity: 0.10,
+      color: SOURCE_HEX[node.source], transparent: true, opacity: 0.22,
     })))
   }
 
@@ -381,10 +381,10 @@ onBeforeUnmount(() => { cancelAnimationFrame(animId); renderer?.dispose(); windo
 
     <!-- Legend -->
     <div class="absolute bottom-3 left-3 z-10 flex gap-3 font-mono text-[10px] pointer-events-none items-center">
-      <span class="flex items-center gap-1 text-accent"><Send :size="10" /> TG</span>
-      <span class="flex items-center gap-1 text-[#8b5cf6]"><Hash :size="10" /> Thread</span>
-      <span class="flex items-center gap-1 text-yellow"><Briefcase :size="10" /> Upwork</span>
-      <span class="flex items-center gap-1 text-accent-2"><Zap :size="10" /> Bot</span>
+      <span class="flex items-center gap-1 text-green-400"><Send :size="10" /> TG</span>
+      <span class="flex items-center gap-1 text-violet-400"><Hash :size="10" /> Thread</span>
+      <span class="flex items-center gap-1 text-amber-400"><Briefcase :size="10" /> Upwork</span>
+      <span class="flex items-center gap-1 text-rose-400"><Zap :size="10" /> Bot</span>
     </div>
   </div>
 </template>

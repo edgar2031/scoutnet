@@ -41,6 +41,7 @@ const section = computed(() => {
       >
         ◢ SCOUTNET
       </span>
+      <span class="font-mono text-[9px] text-text-muted/50 tracking-widest">V1.0.0</span>
     </NuxtLink>
 
     <div class="w-px h-5 bg-border" />
