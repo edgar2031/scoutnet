@@ -1,5 +1,5 @@
 {
-  "name": "lead-hunter-frontend",
+  "name": "scoutnet-frontend",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,15 +12,27 @@
     "lint": "eslint . --ext .vue,.ts,.tsx"
   },
   "dependencies": {
-    "nuxt": "^3.11.0",
-    "vue": "^3.4.0",
-    "@nuxtjs/tailwindcss": "^6.11.0"
+    "@nuxt/icon": "^2.2.2",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@pinia/nuxt": "^0.11.3",
+    "@types/three": "^0.184.1",
+    "@vueuse/core": "^14.3.0",
+    "date-fns": "^4.1.0",
+    "lucide-vue-next": "^1.0.0",
+    "nuxt": "^4.4.5",
+    "pinia": "^3.0.4",
+    "swiper": "^12.1.4",
+    "three": "^0.184.0",
+    "vue": "^3.5.34",
+    "vue-tsc": "^3.2.9"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.2.0",
-    "@vue/test-utils": "^2.4.0",
-    "eslint": "^8.56.0",
-    "typescript": "^5.4.0",
-    "vitest": "^1.4.0"
+    "@nuxt/eslint-config": "^1.15.2",
+    "@types/node": "^25.8.0",
+    "@vue/test-utils": "^2.4.10",
+    "eslint": "^10.4.0",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.6"
   }
 }

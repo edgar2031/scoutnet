@@ -1,17 +1,20 @@
+# Dev image for the Rust backend monolith.
+# Uses cargo-watch for hot-reload: recompiles and restarts the server on file changes.
 FROM alpine:3.21
 
-# System deps
+# Build dependencies for Rust + OpenSSL static linking.
 RUN apk add --no-cache \
     curl musl-dev openssl-dev openssl-libs-static \
     pkgconfig build-base bash
 
-# Install latest stable Rust via rustup
+# Install latest stable Rust via rustup targeting musl for static binaries.
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y \
     --default-toolchain stable \
     --target x86_64-unknown-linux-musl
 ENV PATH="/root/.cargo/bin:${PATH}"
 
-# Dev tools
+# cargo-watch: recompile on source changes.
+# sqlx-cli: run migrations from inside the container.
 RUN cargo install cargo-watch --locked \
     && cargo install sqlx-cli --no-default-features --features postgres,rustls --locked
 
@@ -19,4 +22,5 @@ WORKDIR /app
 
 EXPOSE 8080
 
-CMD ["cargo", "watch", "-x", "run -p api"]
+# Watch all sources and restart the scoutnet binary on change.
+CMD ["cargo", "watch", "-x", "run --bin scoutnet"]

@@ -1,37 +1,82 @@
-[workspace]
-resolver = "2"
-members = [
-    "crates/core",
-    "crates/api",
-    "crates/crypto",
-    "crates/ai_router",
-    "crates/parser_tg",
-    "crates/parser_web",
-    "crates/enricher",
-    "crates/matcher",
-    "crates/notifier",
-]
+[package]
+name    = "scoutnet"
+version = "0.1.0"
+edition = "2021"
 
-[workspace.dependencies]
+[[bin]]
+name = "scoutnet"
+path = "src/main.rs"
+
+[[bin]]
+name = "seed"
+path = "src/bin/seed.rs"
+
+[lib]
+name = "scoutnet"
+path = "src/lib.rs"
+
+[dependencies]
+# Async runtime
 tokio              = { version = "1",     features = ["full"] }
+
+# Web framework
 axum               = { version = "0.8",   features = ["macros"] }
 axum-extra         = { version = "0.10",  features = ["cookie"] }
-serde              = { version = "1",     features = ["derive"] }
-serde_json         = "1"
-sqlx               = { version = "0.8",   features = ["postgres", "runtime-tokio-rustls", "uuid", "chrono", "json"] }
-redis              = { version = "0.27",  features = ["tokio-comp", "aio"] }
-uuid               = { version = "1",     features = ["serde", "v4"] }
-chrono             = { version = "0.4",   features = ["serde"] }
-thiserror          = "2"
-anyhow             = "1"
-tracing            = "0.1"
-tracing-subscriber = { version = "0.3",   features = ["env-filter", "fmt"] }
 tower              = { version = "0.5",   features = ["util"] }
 tower-http         = { version = "0.6",   features = ["cors", "trace", "request-id"] }
+
+# Serialization
+serde              = { version = "1",     features = ["derive"] }
+serde_json         = "1"
+
+# Database
+sqlx               = { version = "0.8",   features = ["postgres", "runtime-tokio-rustls", "uuid", "chrono", "json"] }
+
+# Cache
+redis              = { version = "0.27",  features = ["tokio-comp", "aio"] }
+
+# Types
+uuid               = { version = "1",     features = ["serde", "v4"] }
+chrono             = { version = "0.4",   features = ["serde"] }
+
+# Error handling
+thiserror          = "2"
+anyhow             = "1"
+
+# Logging
+tracing            = "0.1"
+tracing-subscriber = { version = "0.3",   features = ["env-filter", "fmt"] }
+
+# Config
 dotenvy            = "0.15"
+
+# Security
 secrecy            = { version = "0.10",  features = ["serde"] }
 zeroize            = "1"
-reqwest            = { version = "0.12",  features = ["json", "rustls-tls"], default-features = false }
 argon2             = { version = "0.5",   features = ["std"] }
 jsonwebtoken       = "9"
 hmac-sha256        = "1"
+hex                = "0.4"
+
+# Cryptography
+aes-gcm            = { version = "0.10",  features = ["aes"] }
+rand               = "0.8"
+
+# HTTP client (AI providers, parsers)
+reqwest            = { version = "0.12",  features = ["json", "rustls-tls"], default-features = false }
+async-trait        = "0.1"
+
+# Hashing (enricher, parsers)
+sha2               = "0.10"
+
+# RSS parsing (parser_web)
+quick-xml          = "0.36"
+
+# Seeder
+fake               = { version = "5.1",   features = ["derive", "uuid", "chrono"] }
+
+[dev-dependencies]
+wiremock           = "0.6"
+tempfile           = "3"
+tower              = { version = "0.5",   features = ["util"] }
+axum               = { version = "0.8",   features = ["macros"] }
