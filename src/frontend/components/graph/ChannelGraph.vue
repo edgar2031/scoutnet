@@ -28,16 +28,16 @@ interface GraphNode {
 }
 
 const SOURCE_HEX: Record<GraphNode['source'], number> = {
-  telegram: 0x22c55e,   // green — matches Cardinal TG nodes
-  upwork:   0xf59e0b,   // amber
-  bot:      0xf43f5e,   // coral-red
-  thread:   0x8b5cf6,   // violet
+  telegram: 0x4ade80,   // soft green — Cardinal TG style
+  upwork:   0xe0a040,   // muted gold
+  bot:      0xe06080,   // soft coral
+  thread:   0x9580e0,   // soft lavender
 }
 const SOURCE_RGB: Record<GraphNode['source'], string> = {
-  telegram: '34,197,94',
-  upwork:   '245,158,11',
-  bot:      '244,63,94',
-  thread:   '139,92,246',
+  telegram: '74,222,128',
+  upwork:   '224,160,64',
+  bot:      '224,96,128',
+  thread:   '149,128,224',
 }
 type SvgChild = [string, Record<string, string>]
 
@@ -58,10 +58,10 @@ const SOURCE_ICON: Record<GraphNode['source'], SvgChild[]> = {
   thread:   iconNode(Hash),       // lucide: Hash — thread / forum channel
 }
 const SOURCE_TOOLTIP_CLASS: Record<GraphNode['source'], string> = {
-  telegram: 'text-green-400   border-green-400/30   shadow-[0_0_12px_rgba(34,197,94,0.30)]',
-  upwork:   'text-amber-400   border-amber-400/30   shadow-[0_0_12px_rgba(245,158,11,0.30)]',
-  bot:      'text-rose-400    border-rose-400/30    shadow-[0_0_12px_rgba(244,63,94,0.30)]',
-  thread:   'text-violet-400  border-violet-400/30  shadow-[0_0_12px_rgba(139,92,246,0.30)]',
+  telegram: 'text-green-300   border-green-300/30   shadow-[0_0_12px_rgba(74,222,128,0.25)]',
+  upwork:   'text-amber-300   border-amber-300/30   shadow-[0_0_12px_rgba(224,160,64,0.25)]',
+  bot:      'text-rose-300    border-rose-300/30    shadow-[0_0_12px_rgba(224,96,128,0.25)]',
+  thread:   'text-violet-300  border-violet-300/30  shadow-[0_0_12px_rgba(149,128,224,0.25)]',
 }
 
 // 18 nodes evenly distributed on a circle, r ≈ 2.8–3.7, Z ±0.25
@@ -381,10 +381,10 @@ onBeforeUnmount(() => { cancelAnimationFrame(animId); renderer?.dispose(); windo
 
     <!-- Legend -->
     <div class="absolute bottom-3 left-3 z-10 flex gap-3 font-mono text-[10px] pointer-events-none items-center">
-      <span class="flex items-center gap-1 text-green-400"><Send :size="10" /> TG</span>
-      <span class="flex items-center gap-1 text-violet-400"><Hash :size="10" /> Thread</span>
-      <span class="flex items-center gap-1 text-amber-400"><Briefcase :size="10" /> Upwork</span>
-      <span class="flex items-center gap-1 text-rose-400"><Zap :size="10" /> Bot</span>
+      <span class="flex items-center gap-1 text-green-300"><Send :size="10" /> TG</span>
+      <span class="flex items-center gap-1 text-violet-300"><Hash :size="10" /> Thread</span>
+      <span class="flex items-center gap-1 text-amber-300"><Briefcase :size="10" /> Upwork</span>
+      <span class="flex items-center gap-1 text-rose-300"><Zap :size="10" /> Bot</span>
     </div>
   </div>
 </template>
