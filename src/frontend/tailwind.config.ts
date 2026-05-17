@@ -49,8 +49,8 @@ export default {
       },
 
       borderRadius: {
-        card:   '12px',
-        panel:  '16px',
+        card:   '6px',
+        panel:  '10px',
         pill:   '9999px',
       },
 

@@ -67,12 +67,12 @@ function onFeedback(matchId: string, signal: 1 | -1) {
   <div class="flex h-[calc(100vh-56px)]">
 
     <!-- Feed column -->
-    <section class="w-full md:w-[380px] flex flex-col border-r border-border overflow-hidden shrink-0">
+    <section class="w-full md:w-[420px] flex flex-col border-r border-border/60 overflow-hidden shrink-0">
 
       <FilterBar v-model:filters="filters" class="shrink-0" />
 
       <!-- Section header: LIVE FEED label + count badge -->
-      <div class="flex items-center justify-between px-5 py-3 border-b border-border shrink-0">
+      <div class="flex items-center justify-between px-5 py-2.5 border-b border-border/60 shrink-0">
         <div class="flex items-center gap-3">
           <span class="font-mono text-xs text-text-muted uppercase tracking-widest">Live Feed</span>
           <span
@@ -120,10 +120,10 @@ function onFeedback(matchId: string, signal: 1 | -1) {
     <!-- 3D Channel Graph (desktop right panel) -->
     <section class="hidden lg:flex flex-1 flex-col relative overflow-hidden">
       <!-- Graph panel header -->
-      <div class="flex items-center justify-between px-5 py-3 border-b border-border shrink-0">
+      <div class="flex items-center justify-between px-5 py-2.5 border-b border-border/60 shrink-0">
         <div class="flex items-center gap-3">
-          <span class="font-mono text-xs text-text-muted uppercase tracking-widest">Network</span>
-          <span class="font-mono text-[10px] text-text-muted">// Channels</span>
+          <span class="font-mono text-xs text-text-muted uppercase tracking-widest">Satellite</span>
+          <span class="font-mono text-[10px] text-text-muted">// Network Graph</span>
         </div>
         <div class="flex items-center gap-2 font-mono text-[10px] text-text-muted uppercase tracking-widest">
           <span class="text-accent">18</span>

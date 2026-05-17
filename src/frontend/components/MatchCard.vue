@@ -42,9 +42,9 @@ const barColorClean = computed(() =>
 /** Priority label and Tailwind classes derived from score. */
 const priority = computed(() => {
   const s = props.match.score
-  if (s >= 0.85) return { label: 'HIGH', badge: 'text-accent   bg-accent/10   border-accent/30',   border: 'border-l-accent'   }
+  if (s >= 0.85) return { label: 'HIGH', badge: 'text-red-400   bg-red-500/10   border-red-500/30',   border: 'border-l-red-500'   }
   if (s >= 0.65) return { label: 'MED',  badge: 'text-yellow   bg-yellow/10   border-yellow/30',   border: 'border-l-yellow'   }
-  return              { label: 'LOW',  badge: 'text-accent-2 bg-accent-2/10 border-accent-2/30', border: 'border-l-accent-2' }
+  return              { label: 'LOW',  badge: 'text-blue-400 bg-blue-500/10 border-blue-500/30', border: 'border-l-blue-500' }
 })
 
 /** Short source tag. */
@@ -75,7 +75,7 @@ function fmtBudget(rub: number): string {
   <!-- Content -->
   <article
     v-else
-    class="match-card relative bg-surface border border-border-subtle rounded-card shadow-card overflow-hidden cursor-pointer
+    class="match-card relative bg-[rgba(12,16,28,0.85)] backdrop-blur-sm border border-[rgba(140,160,200,0.1)] rounded-card shadow-card overflow-hidden cursor-pointer
            border-l-[3px] transition-all duration-200 hover:shadow-card-hover hover:-translate-y-px"
     :class="priority.border"
   >
@@ -98,7 +98,7 @@ function fmtBudget(rub: number): string {
       <p class="font-sans text-sm text-text leading-relaxed line-clamp-2">{{ match.reason }}</p>
 
       <!-- Budget — hero element, shown when available -->
-      <div v-if="budgetRub" class="font-mono text-2xl font-black tracking-tight text-text">
+      <div v-if="budgetRub" class="font-mono text-[28px] font-black tracking-tight text-text">
         {{ fmtBudget(budgetRub) }}
       </div>
 
@@ -108,9 +108,9 @@ function fmtBudget(rub: number): string {
           <span class="font-mono text-[10px] text-text-muted uppercase tracking-widest">Cover</span>
           <span class="font-mono text-sm font-bold" :class="scoreColor">{{ fmtScore(match.score) }}</span>
         </div>
-        <div class="relative h-[3px] bg-surface-3 rounded-full overflow-hidden">
+        <div class="relative h-[2px] bg-surface-3 rounded-full overflow-hidden">
           <div
-            class="absolute left-0 top-0 h-full rounded-full transition-all duration-700"
+            class="absolute left-0 top-0 h-full rounded-full transition-all duration-700 shadow-[0_0_6px_currentColor]"
             :class="barColorClean"
             :style="{ width: `${match.score * 100}%` }"
           />

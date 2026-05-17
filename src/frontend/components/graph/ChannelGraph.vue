@@ -156,9 +156,10 @@ function makeLabelEl(text: string): HTMLElement {
   span.textContent = text
   span.style.cssText = `
     font-family:'JetBrains Mono','Fira Mono',monospace;
-    font-size:8.5px;letter-spacing:0.04em;
-    color:rgba(160,180,200,0.80);
+    font-size:8px;letter-spacing:0.06em;
+    color:rgba(160,180,210,0.75);
     white-space:nowrap;pointer-events:none;
+    text-transform:uppercase;
   `
   return span
 }
