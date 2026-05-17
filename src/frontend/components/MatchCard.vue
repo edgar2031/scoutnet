@@ -75,8 +75,8 @@ function fmtBudget(rub: number): string {
   <!-- Content -->
   <article
     v-else
-    class="match-card relative bg-surface/80 border border-border-subtle/60 rounded-card shadow-card overflow-hidden cursor-pointer
-           border-l-3 transition-all duration-200 hover:shadow-glow-sm hover:-translate-y-px"
+    class="match-card relative bg-surface border border-border-subtle rounded-card shadow-card overflow-hidden cursor-pointer
+           border-l-[3px] transition-all duration-200 hover:shadow-card-hover hover:-translate-y-px"
     :class="priority.border"
   >
     <div class="px-4 pt-4 pb-3 space-y-2.5">

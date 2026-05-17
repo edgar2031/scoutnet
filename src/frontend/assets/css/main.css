@@ -15,8 +15,8 @@ html {
 }
 
 html, body, #__nuxt {
-  background-color: #0d0d0d;
-  color: #f0f0f0;
+  background-color: #080b14;
+  color: #e8ecf5;
   min-height: 100vh;
   min-height: 100dvh;
 }
@@ -36,8 +36,8 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(249,115,22,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(249,115,22,0.018) 1px, transparent 1px);
+    linear-gradient(rgba(140,160,200,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(140,160,200,0.02) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
 }
@@ -49,9 +49,9 @@ body::after {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 55% 40% at 15% 0%, rgba(249,115,22,0.09) 0%, transparent 65%),
-    radial-gradient(ellipse 45% 35% at 85% 100%, rgba(239,68,68,0.06) 0%, transparent 65%),
-    radial-gradient(ellipse 35% 25% at 50% 50%, rgba(167,139,250,0.03) 0%, transparent 70%);
+    radial-gradient(ellipse 55% 40% at 15% 0%, rgba(59,130,246,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 35% at 85% 100%, rgba(139,92,246,0.04) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 25% at 50% 50%, rgba(100,116,180,0.03) 0%, transparent 70%);
 }
 
 /* ─── Scanline ──────────────────────────────────────────────────── */
@@ -75,17 +75,17 @@ body::after {
   --accent-dim:   #ea6a0a;
   --accent-2:     #ef4444;
   --accent-3:     #facc15;
-  --bg:           #0d0d0d;
-  --surface:      #161616;
-  --surface-2:    #1e1e1e;
-  --border:       #2a2a2a;
-  --border-2:     #353535;
-  --text:         #f0f0f0;
-  --text-dim:     #707070;
-  --glow-accent:  0 0 24px rgba(249,115,22,0.35), 0 0 48px rgba(249,115,22,0.12);
-  --glow-red:     0 0 20px rgba(239,68,68,0.35);
-  --glow-yellow:  0 0 20px rgba(250,204,21,0.25);
-  --radius:       14px;
+  --bg:           #080b14;
+  --surface:      #0f1320;
+  --surface-2:    #151929;
+  --border:       #1e2640;
+  --border-2:     #2a3352;
+  --text:         #e8ecf5;
+  --text-dim:     #6b7394;
+  --glow-accent:  0 0 24px rgba(249,115,22,0.25), 0 0 48px rgba(249,115,22,0.08);
+  --glow-red:     0 0 20px rgba(239,68,68,0.25);
+  --glow-yellow:  0 0 20px rgba(250,204,21,0.18);
+  --radius:       12px;
 }
 
 /* ─── Typography ────────────────────────────────────────────────── */

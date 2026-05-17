@@ -36,8 +36,8 @@ const links: NavLink[] = [
   <aside
     class="hidden md:flex fixed left-0 top-14 bottom-0 w-[64px] z-40 flex-col items-center py-5 gap-2
            bg-bg/[0.99] backdrop-blur-md
-           border-r border-accent/[0.08]
-           shadow-[4px_0_32px_rgba(0,0,0,0.5)]"
+           border-r border-border/40
+           shadow-[4px_0_32px_rgba(0,0,0,0.4)]"
   >
     <NuxtLink
       v-for="link in links"

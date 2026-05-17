@@ -28,8 +28,8 @@ const section = computed(() => {
   <header
     class="fixed top-0 left-0 right-0 h-14 z-50 flex items-center px-6 gap-4
            bg-bg/[0.97] backdrop-blur-xl
-           border-b border-accent/[0.15]
-           shadow-[0_1px_0_rgba(249,115,22,0.08),0_6px_32px_rgba(0,0,0,0.6)]"
+           border-b border-border/60
+           shadow-[0_1px_0_rgba(30,38,64,0.5),0_6px_32px_rgba(0,0,0,0.5)]"
   >
     <!-- Logo -->
     <NuxtLink to="/dashboard" class="flex items-center gap-2 no-underline group shrink-0">

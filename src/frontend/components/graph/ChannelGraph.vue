@@ -361,7 +361,7 @@ onBeforeUnmount(() => { cancelAnimationFrame(animId); renderer?.dispose(); windo
   <div
     ref="containerRef"
     class="relative w-full h-full min-h-[300px] overflow-hidden"
-    style="background:#040610"
+    style="background:#060a15"
     :class="hoveredId ? 'cursor-pointer' : 'cursor-default'"
     @mousemove="onMouseMove"
     @mouseleave="onMouseLeave"

@@ -12,22 +12,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Base — warm dark, like reference
-        bg:           '#0d0d0d',
-        'bg-2':       '#111111',
-        // Card surfaces
-        surface:      '#161616',
-        'surface-2':  '#1e1e1e',
-        'surface-3':  '#252525',
-        // Borders
-        border:       '#2a2a2a',
-        'border-2':   '#353535',
-        'border-subtle': 'rgba(255,255,255,0.07)',
+        // Base — cold dark navy, Cardinal-style
+        bg:           '#080b14',
+        'bg-2':       '#0c1019',
+        // Card surfaces — blue-grey tint
+        surface:      '#0f1320',
+        'surface-2':  '#151929',
+        'surface-3':  '#1c2035',
+        // Borders — cool grey-blue
+        border:       '#1e2640',
+        'border-2':   '#2a3352',
+        'border-subtle': 'rgba(140,160,200,0.08)',
         // Typography
-        text:         '#f0f0f0',
-        'text-dim':   '#707070',
-        'text-muted': '#444444',
-        // Primary accent — orange (like reference CTA)
+        text:         '#e8ecf5',
+        'text-dim':   '#6b7394',
+        'text-muted': '#3d4563',
+        // Primary accent — warm red-orange (Cardinal HIGH badge)
         accent:       '#f97316',
         'accent-dim': '#ea6a0a',
         // Status / semantic
@@ -49,30 +49,30 @@ export default {
       },
 
       borderRadius: {
-        card:   '14px',
-        panel:  '18px',
+        card:   '12px',
+        panel:  '16px',
         pill:   '9999px',
       },
 
       boxShadow: {
-        card:          '0 1px 3px rgba(0,0,0,0.6), 0 4px 20px rgba(0,0,0,0.7)',
-        'card-md':     '0 2px 8px rgba(0,0,0,0.7), 0 8px 40px rgba(0,0,0,0.8)',
-        'card-hover':  '0 8px 40px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.06)',
-        // Orange glow
-        'glow-sm':     '0 0 12px rgba(249,115,22,0.35)',
-        'glow':        '0 0 24px rgba(249,115,22,0.30), 0 0 48px rgba(249,115,22,0.12)',
-        'glow-red':    '0 0 20px rgba(239,68,68,0.35)',
-        'glow-cyan':   '0 0 20px rgba(250,204,21,0.25)',
-        'inset-accent':'inset 0 0 0 1px rgba(249,115,22,0.18)',
-        'focus':       '0 0 0 3px rgba(249,115,22,0.15)',
+        card:          '0 1px 3px rgba(0,0,0,0.5), 0 4px 20px rgba(0,0,0,0.4)',
+        'card-md':     '0 2px 8px rgba(0,0,0,0.5), 0 8px 40px rgba(0,0,0,0.5)',
+        'card-hover':  '0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(140,160,200,0.08)',
+        // Accent glow
+        'glow-sm':     '0 0 12px rgba(249,115,22,0.25)',
+        'glow':        '0 0 24px rgba(249,115,22,0.20), 0 0 48px rgba(249,115,22,0.08)',
+        'glow-red':    '0 0 20px rgba(239,68,68,0.25)',
+        'glow-cyan':   '0 0 20px rgba(250,204,21,0.18)',
+        'inset-accent':'inset 0 0 0 1px rgba(249,115,22,0.12)',
+        'focus':       '0 0 0 3px rgba(249,115,22,0.12)',
       },
 
       backgroundImage: {
         'gradient-accent':   'linear-gradient(135deg, #f97316 0%, #ef4444 100%)',
         'gradient-accent-v': 'linear-gradient(180deg, #f97316 0%, #ef4444 100%)',
-        'gradient-surface':  'linear-gradient(180deg, #161616 0%, #0d0d0d 100%)',
-        'glow-orange': 'radial-gradient(ellipse 60% 50% at 20% 0%, rgba(249,115,22,0.08) 0%, transparent 70%)',
-        'glow-red':    'radial-gradient(ellipse 50% 40% at 80% 100%, rgba(239,68,68,0.05) 0%, transparent 70%)',
+        'gradient-surface':  'linear-gradient(180deg, #0f1320 0%, #080b14 100%)',
+        'glow-orange': 'radial-gradient(ellipse 60% 50% at 20% 0%, rgba(249,115,22,0.06) 0%, transparent 70%)',
+        'glow-red':    'radial-gradient(ellipse 50% 40% at 80% 100%, rgba(239,68,68,0.04) 0%, transparent 70%)',
       },
 
       animation: {
@@ -89,8 +89,8 @@ export default {
           '50%':      { transform: 'translateY(-6px)' },
         },
         'glow-pulse': {
-          '0%, 100%': { boxShadow: '0 0 8px rgba(249,115,22,0.3)' },
-          '50%':      { boxShadow: '0 0 24px rgba(249,115,22,0.7), 0 0 48px rgba(249,115,22,0.3)' },
+          '0%, 100%': { boxShadow: '0 0 8px rgba(249,115,22,0.2)' },
+          '50%':      { boxShadow: '0 0 24px rgba(249,115,22,0.5), 0 0 48px rgba(249,115,22,0.2)' },
         },
         'slide-up': {
           from: { opacity: '0', transform: 'translateY(6px)' },
