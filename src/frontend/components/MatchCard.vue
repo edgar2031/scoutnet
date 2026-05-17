@@ -35,9 +35,7 @@ const emit = defineEmits<{
 
 const scoreColor = computed(() => scoreTextClass(props.match.score))
 const budgetRub = computed(() => props.match.message?.budget_rub ?? null)
-const barColorClean = computed(() =>
-  scoreBarClass(props.match.score).replace(/shadow-\[[^\]]+\]/g, '').trim()
-)
+const barColor = computed(() => scoreBarClass(props.match.score))
 
 /** Priority label and Tailwind classes derived from score. */
 const priority = computed(() => {
@@ -93,7 +91,7 @@ function fmtBudget(rub: number): string {
       <!-- Row 2: source + channel -->
       <div class="flex items-center gap-1 min-w-0">
         <span class="font-mono text-2xs text-text-muted uppercase shrink-0">{{ sourceTag }} ·</span>
-        <span class="font-mono text-2xs text-accent truncate">{{ match.message?.channel }}</span>
+        <span class="font-mono text-2xs text-src-name truncate">{{ match.message?.channel }}</span>
       </div>
 
       <!-- Row 3: description (2 lines max) -->
@@ -113,7 +111,7 @@ function fmtBudget(rub: number): string {
         <div class="relative h-[2px] rounded-[1px] bg-border overflow-hidden">
           <div
             class="absolute left-0 top-0 h-full rounded-[1px] transition-all duration-700"
-            :class="barColorClean"
+            :class="barColor"
             :style="{ width: `${match.score * 100}%` }"
           />
         </div>

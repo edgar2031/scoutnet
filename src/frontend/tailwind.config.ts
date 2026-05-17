@@ -47,6 +47,7 @@ export default {
         'src-thread': '#ffffff',
         'src-kanal':  '#f97316',
         'src-bot':    '#22c55e',
+        'src-name':   '#6366f1',
       },
 
       fontFamily: {

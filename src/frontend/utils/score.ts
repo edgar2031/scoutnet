@@ -1,39 +1,31 @@
 /**
- * Score-to-style mapping utilities.
- * Thresholds are the product spec: ≥0.9 perfect, 0.7–0.9 strong, 0.5–0.7 possible, <0.5 poor.
+ * Score-to-style mapping utilities — Cardinal spec.
+ * Bar color matches priority tag: red ≥0.85, orange ≥0.65, blue <0.65.
  */
 
 /**
- * Returns the Tailwind text color class for a match score badge.
+ * Returns the Tailwind text color class for a match score.
  *
  * @param score - Float 0.0–1.0
  * @returns Tailwind utility class string
- *
- * @example
- * scoreTextClass(0.95) // 'text-accent'
- * scoreTextClass(0.60) // 'text-orange'
  */
 export function scoreTextClass(score: number): string {
-  if (score >= 0.9) return 'text-accent'
-  if (score >= 0.7) return 'text-yellow'
-  if (score >= 0.5) return 'text-orange'
-  return 'text-accent-2'
+  if (score >= 0.85) return 'text-tag-high'
+  if (score >= 0.65) return 'text-tag-mid'
+  return 'text-tag-low'
 }
 
 /**
- * Returns the Tailwind background + shadow class for the score accent bar.
+ * Returns the Tailwind background class for the score progress bar.
+ * Color matches the priority tag per Cardinal spec.
  *
  * @param score - Float 0.0–1.0
- * @returns Tailwind utility class string (bg + optional shadow-glow)
- *
- * @example
- * scoreBarClass(0.95) // 'bg-accent shadow-[0_0_6px_rgba(249,115,22,0.6)]'
+ * @returns Tailwind utility class string
  */
 export function scoreBarClass(score: number): string {
-  if (score >= 0.9) return 'bg-accent shadow-[0_0_6px_rgba(249,115,22,0.6)]'
-  if (score >= 0.7) return 'bg-yellow shadow-[0_0_6px_rgba(250,204,21,0.6)]'
-  if (score >= 0.5) return 'bg-orange'
-  return 'bg-accent-2 shadow-[0_0_6px_rgba(239,68,68,0.6)]'
+  if (score >= 0.85) return 'bg-tag-high'
+  if (score >= 0.65) return 'bg-tag-mid'
+  return 'bg-tag-low'
 }
 
 /**
@@ -41,10 +33,6 @@ export function scoreBarClass(score: number): string {
  *
  * @param score - Float 0.0–1.0
  * @returns `"perfect"` | `"strong"` | `"possible"` | `"poor"`
- *
- * @example
- * scoreLabel(0.95) // 'perfect'
- * scoreLabel(0.45) // 'poor'
  */
 export function scoreLabel(score: number): 'perfect' | 'strong' | 'possible' | 'poor' {
   if (score >= 0.9) return 'perfect'
